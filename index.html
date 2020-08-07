@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html ng-app="Chat" ng-controller="MainCtrl">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Online</title>
+    <link href="./img/fav.png" rel="shortcut icon" type="image/x-icon">
+    <meta name="theme-color" content="#665aac">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet">
+    <link href="./css/main.css" rel="stylesheet">
+</head>
+
+<body ng-cloak ng-init="checkAge()">
+
+<div id="bar">
+    <div class="container">
+        <div class="header-right">
+            <div class="photo pull-left">
+                <img src="./img/p1.jpg" alt="" class="img-responsive">
+            </div>
+            <div class="desc">
+                <div class="name">Julia</div>
+                <div class="online">online</div>
+            </div>
+
+        </div>
+        <div class="header-left">
+            <div>
+                <div class="name">Online</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="body">
+    <div class="container body-container" id="body-container">
+        <div class="list">
+            <div class="message-container" ng-repeat="d in dialog">
+                <div class="chat2 chats animated fadeIn faster"
+                     ng-class="{'user pull-right': d.who === 'user', 'photo': d.type === 'photo', 'user-photo': d.who === 'manager' && $index === 0}">
+                    <div class="img" ng-show="d.type === 'photo'">
+                        <img ng-if="d.type === 'photo'" ng-src="{{d.text}}" alt="" class="img-responsive">
+                    </div>
+                    <p ng-if="!d.type" ng-bind-html="d.text"></p>
+                </div>
+                <div class="chat2 chats call-button" ng-show="questionBox && $index === 7"
+                     ng-class="{'call-button': callButton}">
+                    <a class="btn " href="https://shrt.club/nwpla" target="_blank">View My Profile!</a>
+                </div>
+            </div>
+            <div class="user-typing" ng-show="shodDialog">
+                <p ng-bind-html="person + ' is typing...'"></p>
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="footer" rebuild="questionBox" resize>
+
+        <p ng-if="!questionBox">
+            © 2020. IBRO <br>
+      
+        </p>
+
+     
+    </div>
+</div>
+<!--<div id="mo" class="alert" ng-class="{'ios': platform === 'ios', 'android': platform === 'android', 'active animated fadeIn faster': active}">-->
+<!--    <div class="inner">-->
+<!--        <div class="alert__title">Da li imaš više od 18?</div>-->
+<!--        <div class="text" id="formContent"></div>-->
+<!--    </div>-->
+<!--    <div class="button-container" id="button-container">-->
+<!--        <a class="button" href="#" ng-click="checkAge($event)">DA</a>-->
+<!--        <a class="button" href="#" onclick="window.location.href = 'https://www.google.com/'">NE</a>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="overlay" ng-class="{'active': overlay}"></div>-->
+<script type="text/javascript" src="./js/main.js"></script>
+</body>
+
+</html>
